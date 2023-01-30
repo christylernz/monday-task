@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Task Management Board</title>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <div class="container mx-auto">
+      <div class="p-6 bg-white shadow-md">
+        <h1 class="text-3xl font-medium text-center">Task Management Board</h1>
+        <div id="boardContainer" class="my-6"></div>
+        <script src="https://sdk.monday.com/v2.js"></script>
+        <script>
+          monday.init("#boardContainer", {
+            itemId: "YOUR_ITEM_ID",
+            type: "board",
+            columnIds: ["status", "name"],
+            theme: {
+              fonts: "Vibe",
+              colors: {
+                text: "#333",
+                background: "#fafafa",
+                primary: "#0366d6"
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
