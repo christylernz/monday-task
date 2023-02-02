@@ -13,19 +13,39 @@
         <div id="boardContainer" class="my-6"></div>
         <script src="https://sdk.monday.com/v2.js"></script>
         <script>
-          monday.init("#boardContainer", {
-            itemId: "YOUR_ITEM_ID",
-            type: "board",
-            columnIds: ["status", "name"],
-            theme: {
-              fonts: "Vibe",
-              colors: {
-                text: "#333",
-                background: "#fafafa",
-                primary: "#0366d6"
-              }
-            }
-          });
+          monday.api("#boardContainer", query {
+  me {
+    name
+  }
+
+  boards(ids:[3890003815]) {
+    name
+    id
+    columns {
+      title
+      id
+      type
+    }
+    
+    groups {
+    	title
+      id
+    }
+    
+    items {
+      name
+      group {
+        id
+      }
+      
+      column_values {
+        id
+        value
+        text
+      }
+    }
+  }
+});
         </script>
       </div>
     </div>
